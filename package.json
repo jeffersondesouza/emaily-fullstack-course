@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.1.1",
+    "npm": "5.0.3"
+  },
   "scripts": {
-    "lint": "eslint"
+    "lint": "eslint",
+    "start": "node index.js",
+    "serve": "nodemon"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jefferson de Souza",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3"
@@ -17,6 +23,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "3.0.1"
+    "eslint-plugin-prettier": "3.0.1",
+    "nodemon": "^2.0.2"
   }
 }

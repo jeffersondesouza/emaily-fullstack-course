@@ -6,4 +6,8 @@ app.get('/', (req, res) => {
   res.send({ hi: 'there' });
 });
 
-app.listen(5000);
+const { PORT } = process.env;
+
+app.listen(PORT || 5000, () => {
+  console.log(`App runing at: http://localhost:${PORT || 5000}/`);
+});
