@@ -25,5 +25,9 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "3.0.1",
     "nodemon": "^2.0.2"
+  },
+  "homepage": "https://morning-chamber-92877.herokuapp.com/",
+  "repository": {
+    "url": "https://git.heroku.com/morning-chamber-92877.git"
   }
 }
