@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint",
     "start": "node index.js",
-    "serve": "nodemon"
+    "dev": "nodemon"
   },
   "keywords": [],
   "author": "Jefferson de Souza",
