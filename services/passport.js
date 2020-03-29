@@ -21,8 +21,7 @@ passport.use(
     {
       clientID: keys.googleClientId,
       clientSecret: keys.googleClientSecret,
-      callbackURL:
-        'https://morning-chamber-92877.herokuapp.com/auth/google/callback',
+      callbackURL: keys.callbackURL,
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(existingUser => {
