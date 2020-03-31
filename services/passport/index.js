@@ -5,7 +5,7 @@ const keys = require('../../config/keys');
 
 const serializeUser = require('./serializeUser');
 const deserializeUser = require('./deserializeUser');
-const signInOrLogin = require('./signInOrLogin');
+const signUpOrLogin = require('./signUpOrLogin');
 
 passport.serializeUser(serializeUser);
 
@@ -18,6 +18,6 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: keys.callbackURL,
     },
-    signInOrLogin
+    signUpOrLogin
   )
 );
