@@ -9,16 +9,18 @@ import Landing from './Landing';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <div>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/surveys" component={Dashboard} />
-          <Route path="/surveys/new" component={SurveyNew} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <div className="container">
+      <BrowserRouter>
+        <Header />
+        <div>
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
