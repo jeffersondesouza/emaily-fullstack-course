@@ -1,14 +1,24 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Header from './Header';
+import Dashboard from './Dashboard';
+import SurveyNew from './SurveyNew';
+import Landing from './Landing';
 
 function App() {
-  const st = useSelector(state => state);
-  console.log('st:', st)
-
   return (
-    <div className="App">
-      <h1>Welcome to Emaily!</h1>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <div>
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route path="/surveys/new" component={SurveyNew} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
