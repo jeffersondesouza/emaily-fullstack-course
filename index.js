@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const cors = require('cors');  
 
 const keys = require('./config/keys');
 
@@ -15,6 +16,8 @@ mongoose.connect(keys.mongoURI, {
 
 const { PORT } = process.env;
 const app = express();
+
+app.use(cors());
 
 app.use(
   cookieSession({
