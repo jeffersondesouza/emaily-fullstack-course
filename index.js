@@ -26,6 +26,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/casos', (req, res) => {
+  res.send({
+    suspeitos: 10,
+    descartados: 20,
+    confirmados: 1,
+    recuperados: 1,
+    obtos: 1,
+  });
+});
+
 require('./routes/auth')(app);
 
 app.listen(PORT || 5000, () => {
