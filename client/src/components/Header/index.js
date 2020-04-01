@@ -4,20 +4,28 @@ import { NavLink, Link } from 'react-router-dom';
 import Switch from '../../utils/Switch';
 
 const Header = () => {
+  const [logoLink, setLogoLink] = useState('/');
+
   const authState = useSelector(st => st.auth);
 
-  const [authLabel, setAuthLabel] = useState('');
+  useEffect(() => {
+    const link = Switch.of(authState)
+      .case(null || false, '/')
+      .default('/surveys');
+
+    setLogoLink(link);
+  }, [authState]);
 
   const renderAction = () =>
     Switch.of(authState)
       .case(null, '')
-      .case(authState === false, <a href="/auth/google">Login with Google</a>)
+      .case(false, <a href="/auth/google">Login with Google</a>)
       .default(<a href="/api/logout">Logout</a>);
 
   return (
     <nav>
       <div className="nav-wrapper">
-        <NavLink to="/"  className="brand-logo">
+        <NavLink to={logoLink} className="brand-logo">
           Emaily
         </NavLink>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
