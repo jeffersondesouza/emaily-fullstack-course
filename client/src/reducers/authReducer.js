@@ -1,18 +1,10 @@
-/*
-const r1 = (state, payload, initialState) => {};
-const r2 = (state, payload, initialState) => {};
+import { FETCH_USER } from '../actions/types';
+import Switch from '../utils/Switch';
 
- export default (state = {}, { type, payload }) =>
-  Reducer.of(state, payload, initialState)
-    .switch(type)
-    .case('value 1', r1)
-    .case('value 2', r2)
-    .defualt(state);
- */
-export default function(state = {}, action) {
-  console.log('action:', action.payload)
-  switch (action.type) {
-    default:
-      return state;
-  }
+const updateUser = payload => payload || false;
+
+export default function(state = null, action) {
+  return Switch.of(action.type, action.payload)
+    .case(FETCH_USER, updateUser)
+    .default(state);
 }
