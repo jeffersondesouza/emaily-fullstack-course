@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const cors = require('cors');  
-
+/* import crypto from 'crypto'; */
 const keys = require('./config/keys');
 
 require('./models/User');
