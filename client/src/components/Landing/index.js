@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 const Landing = () => {
   return (
-    <div>
-      Landing
+    <div className="center">
+      <h1>Emaily!</h1>
+      <p>Collect feedback from your users</p>
     </div>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;
