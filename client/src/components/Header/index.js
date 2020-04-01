@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   return (
     <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">
+      <div className="nav-wrapper">
+        <a href="#" className="brand-logo">
           Emaily
         </a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
             <a href="/auth/google">Login with Google</a>
           </li>

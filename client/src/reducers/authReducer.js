@@ -10,6 +10,7 @@ const r2 = (state, payload, initialState) => {};
     .defualt(state);
  */
 export default function(state = {}, action) {
+  console.log('action:', action.payload)
   switch (action.type) {
     default:
       return state;

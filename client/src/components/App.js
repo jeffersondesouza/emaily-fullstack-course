@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import * as actions from '../actions';
 
 import Header from './Header';
 import Dashboard from './Dashboard';
@@ -8,6 +10,12 @@ import SurveyNew from './SurveyNew';
 import Landing from './Landing';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.fetchUser());
+  }, []);
+
   return (
     <div className="container">
       <BrowserRouter>
