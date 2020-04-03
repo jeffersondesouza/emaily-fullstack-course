@@ -34,5 +34,6 @@ module.exports = (app, ...middlewares) => {
       recipients,
       userId: req.user.id,
     });
+    console.log('survey:', survey);
   });
 };
