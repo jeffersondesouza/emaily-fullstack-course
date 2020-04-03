@@ -13,7 +13,7 @@
     "server": "nodemon",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":"echo run after heroku build "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "Jefferson de Souza",
