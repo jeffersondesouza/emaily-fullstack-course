@@ -1,9 +1,14 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 
+import * as actions from '../../actions';
+import { useDispatch } from 'react-redux';
+
 const Payments = () => {
+  const dispatch = useDispatch();
+
   const handleReceivePaymentToken = tokenObj => {
-    console.log('token:', tokenObj);
+    dispatch(actions.handleToken(tokenObj));
   };
 
   return (

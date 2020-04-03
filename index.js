@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
-const cors = require('cors');  
+// const cors = require('cors');
 /* import crypto from 'crypto'; */
 const keys = require('./config/keys');
 
@@ -17,7 +18,8 @@ mongoose.connect(keys.mongoURI, {
 const { PORT } = process.env;
 const app = express();
 
-app.use(cors());
+app.use(bodyParser.json());
+// app.use(cors());
 
 app.use(
   cookieSession({
@@ -40,6 +42,7 @@ app.get('/casos', (req, res) => {
 });
 
 require('./routes/auth')(app);
+require('./routes/billing')(app);
 
 app.listen(PORT || 5000, () => {
   // eslint-disable-next-line no-console
