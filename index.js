@@ -10,6 +10,7 @@ const keys = require('./config/keys');
 const requireLoginMd = require('./middlewares/requireLoginMd');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 const envVariables = require('./services/envVariables');
 
@@ -46,6 +47,7 @@ app.get('/casos', (req, res) => {
 
 require('./routes/auth')(app);
 require('./routes/billing')(app, requireLoginMd);
+require('./routes/surveys')(app, requireLoginMd);
 
 /* CLIENT Routes */
 if (envVariables.isProduction()) {
