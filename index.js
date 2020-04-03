@@ -6,6 +6,7 @@ const cookieSession = require('cookie-session');
 // const cors = require('cors');
 /* import crypto from 'crypto'; */
 const keys = require('./config/keys');
+const requireLoginMd = require('./middlewares/requireLoginMd');
 
 require('./models/User');
 require('./services/passport');
@@ -42,7 +43,7 @@ app.get('/casos', (req, res) => {
 });
 
 require('./routes/auth')(app);
-require('./routes/billing')(app);
+require('./routes/billing')(app, requireLoginMd);
 
 app.listen(PORT || 5000, () => {
   // eslint-disable-next-line no-console
