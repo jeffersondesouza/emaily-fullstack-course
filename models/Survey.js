@@ -15,4 +15,4 @@ const surveySchema = new Schema({
   _user: { type: Schema.Types.ObjectId, ref: 'User' }, /* <-- (relação) fui criado pelo user */
 });
 
-mongoose.model('survey', surveySchema);
+mongoose.model('surveys', surveySchema);
