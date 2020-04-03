@@ -30,9 +30,14 @@ const Header = () => {
           Emaily
         </NavLink>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li>
-            <Payments />
-          </li>
+          {authState && authState.isLoggedIn && (
+            <>
+              <li style={{ margin: '0 10px' }}>
+                <Payments />
+              </li>
+              <li>Credits: {authState.credits}</li>
+            </>
+          )}
           <li>{renderAction()}</li>
         </ul>
       </div>
