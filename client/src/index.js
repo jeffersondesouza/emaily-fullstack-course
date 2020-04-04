@@ -16,11 +16,10 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 window.axios = Axios;
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
