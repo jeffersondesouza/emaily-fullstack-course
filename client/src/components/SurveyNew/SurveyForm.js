@@ -2,12 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
+import validateEmails from '../../utils/validateEmails';
 
 const FIELDS = [
   { name: 'title', label: 'Survey Title' },
   { name: 'line', label: 'Survey Line' },
   { name: 'body', label: 'Survey Body' },
-  { name: 'list', label: 'Survey List' },
+  { name: 'emails', label: 'Survey List' },
 ];
 
 const SurveyForm = props => {
@@ -49,8 +50,11 @@ const SurveyForm = props => {
 function validate(values) {
   const errors = {};
 
+  errors.emails = validateEmails(values.emails);
+
   FIELDS.forEach(({ name }) => {
     if (!values[name]) {
+      
       errors[name] = 'This field is required';
     }
   });
