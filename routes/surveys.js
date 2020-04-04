@@ -45,13 +45,13 @@ module.exports = (app, ...middlewares) => {
 
       try {
         await mailer.send();
-     /*    await survey.save();
+        await survey.save();
         req.user.credits -= 1;
-        const user = await req.user.save(); */
+        const user = await req.user.save();
 
-        res.send({});
+        res.send(user);
       } catch (err) {
-        console.log('err:', err)
+        console.log('err:', err);
         res.status(422).send(err);
       }
     }
