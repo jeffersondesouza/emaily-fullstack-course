@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import SurveyForm from './SurveyForm';
+import SurveyFormReview from './SurveyFormReview';
 
 const SurveyNew = () => {
   return (
     <div>
-      SurveyNew
+      <SurveyForm />
+      <SurveyFormReview />
     </div>
-  )
-}
+  );
+};
 
-export default SurveyNew
+export default SurveyNew;
