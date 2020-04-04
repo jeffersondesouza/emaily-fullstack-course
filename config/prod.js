@@ -8,9 +8,11 @@ module.exports = {
   stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   sendGridKey: process.env.SEND_GRID_KEY,
+  redirectDomain: 'http://localhost:3000' 
 };
 
 /* 
+process.env.REDIRECT_DOMAIN
 
   googleClientId:
     '119552001929-3mhg37qpga3qs8859rq7jko4bdpkm1et.apps.googleusercontent.com',
