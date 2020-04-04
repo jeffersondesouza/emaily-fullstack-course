@@ -9,8 +9,11 @@ import reducers from './reducers';
 
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import Axios from 'axios';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+
+window.axios = Axios;
 
 ReactDOM.render(
   <React.StrictMode>
