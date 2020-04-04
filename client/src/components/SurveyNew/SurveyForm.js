@@ -2,6 +2,13 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 
+const FIELDS = [
+  { name: 'surveyTitle', label: 'Survey Title' },
+  { name: 'surveyLine', label: 'Survey Line' },
+  { name: 'surveyBody', label: 'Survey Body' },
+  { name: 'surveyList', label: 'Survey List' },
+];
+
 const SurveyForm = props => {
   const onSubmit = values => {
     console.log('values:', values);
@@ -10,32 +17,15 @@ const SurveyForm = props => {
   const renderFields = () => {
     return (
       <div>
-        <Field
-          type="text"
-          name="surveyTitle"
-          label="Survey Title"
-          component={SurveyField}
-        />
-        <Field
-          type="text"
-          name="surveyLine"
-          label="Survey Line"
-          component={SurveyField}
-        />
-
-        <Field
-          type="text"
-          name="surveyBody"
-          label="Survey Body"
-          component={SurveyField}
-        />
-
-        <Field
-          type="text"
-          name="surveyList"
-          label="Recipeient List"
-          component={SurveyField}
-        />
+        {FIELDS.map(item => (
+          <Field
+            key={item.name}
+            name={item.name}
+            label={item.label}
+            type="text"
+            component={SurveyField}
+          />
+        ))}
       </div>
     );
   };
