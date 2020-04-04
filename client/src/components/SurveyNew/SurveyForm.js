@@ -1,12 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 
 const FIELDS = [
-  { name: 'surveyTitle', label: 'Survey Title' },
-  { name: 'surveyLine', label: 'Survey Line' },
-  { name: 'surveyBody', label: 'Survey Body' },
-  { name: 'surveyList', label: 'Survey List' },
+  { name: 'title', label: 'Survey Title' },
+  { name: 'line', label: 'Survey Line' },
+  { name: 'body', label: 'Survey Body' },
+  { name: 'list', label: 'Survey List' },
 ];
 
 const SurveyForm = props => {
@@ -31,11 +32,30 @@ const SurveyForm = props => {
   };
 
   return (
-    <form onSubmit={props.handleSubmit(onSubmit)}>
-      {renderFields()}
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <form onSubmit={props.handleSubmit(onSubmit)}>
+        {renderFields()}
+        <NavLink to="/surveys" className="red btn-flat white-text">
+          Cancel
+        </NavLink>
+        <button type="submit" className="teal btn-flat right white-text">
+          Next <i className="material-icons">done</i>
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default reduxForm({ form: 'surveyForm' })(SurveyForm);
+function validate(values) {
+  const errors = {};
+
+  FIELDS.forEach(({ name }) => {
+    if (!values[name]) {
+      errors[name] = 'This field is required';
+    }
+  });
+
+  return errors;
+}
+
+export default reduxForm({ validate, form: 'surveyForm' })(SurveyForm);
