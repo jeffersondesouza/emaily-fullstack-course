@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const sendgrid = require('sendgrid');
 
 const keys = require('../../config/keys');
