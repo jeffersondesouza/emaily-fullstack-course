@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import FIELDS from './formFields';
 import * as actions from '../../actions';
+import { withRouter, useHistory } from 'react-router-dom';
 
 const selectSurvey = state => {
   const {
@@ -14,11 +15,14 @@ const selectSurvey = state => {
 };
 
 const SurveyFormReview = ({ onCancel }) => {
+  const history = useHistory();
+
   const survey = useSelector(selectSurvey);
+
   const dispatch = useDispatch();
 
   const handleSendSurvey = () => {
-    dispatch(actions.submitSurvey(survey));
+    dispatch(actions.submitSurvey({ survey, history }));
   };
 
   if (!survey) {
@@ -72,4 +76,4 @@ const SurveyFormReview = ({ onCancel }) => {
   );
 };
 
-export default SurveyFormReview;
+export default withRouter(SurveyFormReview);
