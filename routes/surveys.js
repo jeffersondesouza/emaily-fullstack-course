@@ -28,6 +28,14 @@ const buildSurvey = (params) => {
 };
 
 module.exports = (app, ...middlewares) => {
+  app.get('/api/surveys', async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false,
+    });
+
+    res.send(surveys);
+  });
+
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Tanks for voting');
   });
