@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { Path } = require('path-parser');
+const { URL } = require('url');
 const requireCreditsMd = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTempletas/surveyTemplate');
@@ -26,6 +28,46 @@ const buildSurvey = (params) => {
 };
 
 module.exports = (app, ...middlewares) => {
+  app.get('/api/surveys/:surveyId/:choice', (req, res) => {
+    res.send('Tanks for voting');
+  });
+
+  app.post('/api/survey/webhooks', (req, res) => {
+    const surveyEvents = req.body || [];
+    const events = surveyEvents
+      .map(({ email, url }) => {
+        const { pathname } = new URL(url);
+        const p = new Path(pathname);
+        const match = p.test(pathname);
+        if (match) {
+          return {
+            email,
+            surveyId: match.surveyId,
+            choice: match.choice,
+          };
+        }
+        return null;
+      })
+      .filter((event) => !!event);
+
+    events.forEach(({ email, surveyId, choice }) => {
+      Survey.updateOne(
+        {
+          _id: surveyId,
+          recipients: {
+            $elemMatch: { email, responded: false },
+          },
+        },
+        {
+          $inc: { [choice]: 1 },
+          $set: { 'recipients.$.responded': true },
+          lastResponded: new Date(),
+        }
+      ).exec();
+    });
+    res.send({});
+  });
+
   app.post(
     '/api/surveys',
     ...middlewares,
@@ -51,7 +93,6 @@ module.exports = (app, ...middlewares) => {
 
         res.send(user);
       } catch (err) {
-        console.log('err:', err);
         res.status(422).send(err);
       }
     }
