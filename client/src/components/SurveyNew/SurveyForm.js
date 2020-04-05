@@ -4,18 +4,9 @@ import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
 
-const FIELDS = [
-  { name: 'title', label: 'Survey Title' },
-  { name: 'line', label: 'Survey Line' },
-  { name: 'body', label: 'Survey Body' },
-  { name: 'emails', label: 'Survey List' },
-];
+import FIELDS from './formFields';
 
 const SurveyForm = props => {
-  const onSubmit = values => {
-    console.log('values:', values);
-  };
-
   const renderFields = () => {
     return (
       <div>
@@ -34,7 +25,7 @@ const SurveyForm = props => {
 
   return (
     <div>
-      <form onSubmit={props.handleSubmit(onSubmit)}>
+      <form onSubmit={props.handleSubmit(props.onSubmit)}>
         {renderFields()}
         <NavLink to="/surveys" className="red btn-flat white-text">
           Cancel
@@ -54,7 +45,6 @@ function validate(values) {
 
   FIELDS.forEach(({ name }) => {
     if (!values[name]) {
-      
       errors[name] = 'This field is required';
     }
   });
@@ -62,4 +52,8 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({ validate, form: 'surveyForm' })(SurveyForm);
+export default reduxForm({
+  validate,
+  form: 'surveyForm',
+  destroyOnUnmount: false,
+})(SurveyForm);
